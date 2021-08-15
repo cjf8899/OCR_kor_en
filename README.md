@@ -26,7 +26,7 @@ the structures would like
     -- main.py
     ....
 ```
-Requirements
+## Requirements
 * PyTorch>=0.4.1
 * torchvision>=0.2.1
 * opencv-python>=3.4.2
@@ -39,12 +39,12 @@ Requirements
 pip install -r requirements.txt
 ```
 
-Run
+## Run
 ```Shell
 python main.py
 ```
 
 # Referenced. Thank you all:+1:
-detection code : https://github.com/clovaai/CRAFT-pytorch
-recognition code : https://github.com/clovaai/deep-text-recognition-benchmark
-korean ocr code : https://github.com/parksunwoo/ocr_kor
+detection code : https://github.com/clovaai/CRAFT-pytorch<br>
+recognition code : https://github.com/clovaai/deep-text-recognition-benchmark<br>
+korean ocr code : https://github.com/parksunwoo/ocr_kor<br>
