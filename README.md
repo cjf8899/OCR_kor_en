@@ -5,8 +5,13 @@ This repo is an end to end code that **detection language in images and recognit
 ## Getting Started
 Download models
 * [craft_mlt_25k.pth](https://drive.google.com/open?id=1Jk4eGD7crsqCCg9C9VjCLkMN3ze8kutZ)
-  * For the language detection model, craft's model was used.
-
+  * For the language detection model, [craft's](https://github.com/clovaai/CRAFT-pytorch) model was used.
+* [classifi_97.29.pth](https://drive.google.com/file/d/1h8A3thdxsLKHyNvjhR3qUtKW4tBxZF2w/view?usp=sharing)
+  * This is a Korean and English classification model learned using data from aihub.
+* [kor_reg_97.42.pth](https://drive.google.com/file/d/1e-MEl4sHn8B1w8xkECKtlIMyRzrneU3u/view?usp=sharing)
+  * This is a korean recognition model learned using data from aihub.
+* [TPS-ResNet-BiLSTM-Attn.pth](https://drive.google.com/file/d/1b59rXuGGmKne1AuHnkgDzoYgKeETNMv9/view?usp=sharing)
+  * The English recognition model used [clovaai's](https://github.com/clovaai/deep-text-recognition-benchmark) model.
 
 ```Shell
 git clone https://github.com/cjf8899/OCR_kor_en.git
