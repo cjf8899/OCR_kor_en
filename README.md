@@ -2,10 +2,12 @@
 
 This repo is an end to end code that **detection language in images and recognition Korean and English.**
 
-# Getting Started
+## Getting Started
 Download models
+* [craft_mlt_25k.pth](https://drive.google.com/open?id=1Jk4eGD7crsqCCg9C9VjCLkMN3ze8kutZ)
+For the language detection model, craft's model was used.
 
-For the language detection model, (craft's model)[https://drive.google.com/open?id=1Jk4eGD7crsqCCg9C9VjCLkMN3ze8kutZ] was used.
+
 ```Shell
 git clone https://github.com/cjf8899/OCR_kor_en.git
 
