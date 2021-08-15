@@ -5,7 +5,7 @@ This repo is an end to end code that **detection language in images and recognit
 ## Getting Started
 Download models
 * [craft_mlt_25k.pth](https://drive.google.com/open?id=1Jk4eGD7crsqCCg9C9VjCLkMN3ze8kutZ)
- * For the language detection model, craft's model was used.
+  * For the language detection model, craft's model was used.
 
 
 ```Shell
