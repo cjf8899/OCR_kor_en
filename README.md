@@ -1,6 +1,8 @@
 # OCR_kor_en
 
 This repo is an end to end code that **detection language in images and recognition Korean and English.**
+## Demo
+<img src="https://user-images.githubusercontent.com/53032349/129498905-0cb49bea-9843-4ab6-b45b-52892079b9e0.png" width="100%" height="100%" title="70px" alt="memoryblock"><br>
 
 ## Getting Started
 Download models
