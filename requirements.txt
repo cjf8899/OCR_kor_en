@@ -7,3 +7,4 @@ lmdb
 pillow
 nltk
 natsort
+efficientnet_pytorch
