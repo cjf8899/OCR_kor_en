@@ -1,6 +1,6 @@
 # OCR_kor_en
 
-This repo is an end to end code that **detection language in images and recognition Korean and English.**
+This repo is an End to End code that **detection language in images and recognition Korean and English.**
 ## Demo
 <img src="https://user-images.githubusercontent.com/53032349/129499027-8610143e-7174-4278-baca-6c6c0b5c5453.png" width="100%" height="100%" title="70px" alt="memoryblock"><br>
 
@@ -50,3 +50,4 @@ python main.py
 detection code : https://github.com/clovaai/CRAFT-pytorch<br>
 recognition code : https://github.com/clovaai/deep-text-recognition-benchmark<br>
 korean ocr code : https://github.com/parksunwoo/ocr_kor<br>
+aihub dataset : https://aihub.or.kr/aidata/133<br>
