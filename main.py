@@ -82,21 +82,16 @@ def train(kr_opt, en_opt, sample_img_path, crop_img_path, final_img_path):
     criterion = torch.nn.CrossEntropyLoss(ignore_index=0).to(device)  # ignore [GO] token = ignore index 0
     kr_model.eval()
     en_model.eval()
+    
+    img_num_list = list()
     with torch.no_grad():
-        _, _, _, kr_preds, labels, _, _, real_label, img_path = validation(
+        _, _, _, kr_pred_list, _, _, _, _, img_path = validation(
             kr_model, criterion, valid_loader, converter, kr_opt)
-        _, _, _, en_preds, en_labels, _, _, en_real_label, en_img_path = validation(
+        _, _, _, en_pred_list, _, _, _, _, en_img_path = validation(
             en_model, criterion, valid_loader, en_converter, en_opt)
       
     
-    kr_pred_list = list()
-    en_pred_list = list()
-    img_num_list = list()
-    for kr_pred, gt, real, en_pred, en_gt, en_real, path in zip(kr_preds, labels, real_label, en_preds, en_labels, en_real_label, img_path):
-        kr_pred = kr_pred[:kr_pred.find('[s]')]
-        kr_pred_list.append(kr_pred)
-        en_pred = en_pred[:en_pred.find('[s]')]
-        en_pred_list.append(en_pred)
+    for path in img_path:
         img_num_list.append(path.split(crop_img_path)[1].split('_')[1])
 
     
