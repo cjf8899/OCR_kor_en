@@ -23,7 +23,7 @@ Download models
 
 Crop the video frame by frame and apply a morphology operation for increase the recognition rate.<br>
 
-<img src="https://user-images.githubusercontent.com/53032349/170910668-98864001-9ab4-41e6-b833-1c4905b44e43.png" width="70%" height="70%" title="70px" alt="memoryblock"><br>
+<p align="center"><img src="https://user-images.githubusercontent.com/53032349/170910668-98864001-9ab4-41e6-b833-1c4905b44e43.png" width="70%" height="70%" title="70px" alt="memoryblock"></p><br>
 
 Put your video name in video_name. (ex: ocr_test.mp4)<br>
 
