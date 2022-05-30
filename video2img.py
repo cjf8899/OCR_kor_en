@@ -12,16 +12,16 @@ save_dir_ori = save_dir+'_ori'
 
 
 if not os.path.isdir(save_dir):
-    os.mkdir(save_dir)
+    os.makedirs(save_dir)
 else:
     shutil.rmtree(save_dir)
-    os.mkdir(save_dir)
+    os.makedirs(save_dir)
     
 if not os.path.isdir(save_dir_ori):
-    os.mkdir(save_dir_ori)
+    os.makedirs(save_dir_ori)
 else:
     shutil.rmtree(save_dir_ori)
-    os.mkdir(save_dir_ori)
+    os.makedirs(save_dir_ori)
         
 
 
