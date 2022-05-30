@@ -95,30 +95,33 @@ def train(kr_opt, en_opt, sample_img_path, crop_img_path, final_img_path):
         img_num_list.append(path.split(crop_img_path)[1].split('_')[1])
 
     
-    
     my_set = set(img_num_list) 
     img_num_list = list(my_set)
     fontpath = "./font/NanumBarunGothic.ttf"
     font = ImageFont.truetype(fontpath, 50)
 
-    for img_num in img_num_list:
+    for k, img_num in enumerate(img_num_list):
         if os.path.isfile(sample_img_path[:-1]+'_ori/' + str(img_num)+'.jpg'):
             image = cv2.imread(sample_img_path[:-1]+'_ori/' + str(img_num)+'.jpg')
         else:
             image = cv2.imread(sample_img_path + str(img_num)+'.jpg')
+        
+        print("Test image {:d}/{:d}: {:s}".format(k+1, len(img_num_list), img_num), end='\r')
         img_pil = Image.fromarray(image)
         draw = ImageDraw.Draw(img_pil)
         for kr_pred, en_pred, path in zip(kr_pred_list, en_pred_list, img_path):
+            if len(kr_pred) ==0:
+                continue
             if img_num == path.split(crop_img_path)[1].split('_')[1]:
                 x, y, xw, yh = path.split('_')[-2].split('|')
                 lang = path.split('_')[-1].split('.jpg')[0]
-                cv2.rectangle(image, (int(x), int(y)), (int(xw), int(yh)) , (0, 0, 255), 5)
                 draw.rectangle(((int(x), int(y)), (int(xw), int(yh))), outline=(0, 0, 255), width=2)
-                cv2.rectangle(image, (int(x), int(y)), (int(xw), int(yh)), (0,0,255), 5)
             
-                
-                draw.text((int(x), int(y)+10), kr_pred, (255,0,0), font=font)
-                draw.text((int(x), int(y)+60), en_pred, (0,255,0), font=font)
+                if lang == '1':
+                    draw.text((int(x), int(y)+10), kr_pred[0], (255,0,0), font=font)
+                else:
+                    draw.text((int(x), int(y)+10), en_pred[0], (0,255,0), font=font)
+                    
                 
         image = np.array(img_pil)    
         cv2.imwrite(final_img_path + 'final_' + str(img_num) + '.jpg', image)
@@ -199,14 +202,14 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='CRAFT Text Detection')
     parser.add_argument('--trained_model', default='./model/craft_mlt_25k.pth', type=str, help='pretrained model')
     parser.add_argument('--text_threshold', default=0.6, type=float, help='text confidence threshold')
-    parser.add_argument('--low_text', default=0.45, type=float, help='text low-bound score')
+    parser.add_argument('--low_text', default=0.4, type=float, help='text low-bound score')
     parser.add_argument('--link_threshold', default=1, type=float, help='link confidence threshold')
     parser.add_argument('--cuda', default=True, type=str2bool, help='Use cuda for inference')
     parser.add_argument('--canvas_size', default=1280, type=int, help='image size for inference')
     parser.add_argument('--mag_ratio', default=1.5, type=float, help='image magnification ratio')
     parser.add_argument('--poly', default=False, action='store_true', help='enable polygon type')
     parser.add_argument('--show_time', default=False, action='store_true', help='show processing time')
-    parser.add_argument('--test_folder', default='./sample_img/', type=str, help='folder path to input images')
+    parser.add_argument('--test_folder', default='./sample_video/ocr_test2/', type=str, help='folder path to input images')
     parser.add_argument('--refine', default=False, action='store_true', help='enable link refiner')
     parser.add_argument('--refiner_model', default='./model/craft_refiner_CTW1500.pth', type=str, help='pretrained refiner model')
 
@@ -241,6 +244,9 @@ if __name__ == '__main__':
 
     if not os.path.isdir(final_img_folder):
         os.mkdir(final_img_folder)
+    else:
+        shutil.rmtree(final_img_folder)
+        os.mkdir(final_img_folder)
 
     # load net
     net = CRAFT()     # initialize
@@ -261,7 +267,6 @@ if __name__ == '__main__':
 
     # load data
     for k, image_path in enumerate(image_list):
-        print(image_path)
         print("Test image {:d}/{:d}: {:s}".format(k+1, len(image_list), image_path), end='\r')
         image = imgproc.loadImage(image_path)
 

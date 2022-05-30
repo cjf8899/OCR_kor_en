@@ -77,12 +77,14 @@ def validation(model, criterion, evaluation_loader, converter, opt):
     infer_time = 0
     valid_loss_avg = Averager()
     
-    
     real_label = list()
     img_path_list = list()
     preds_str_list = list()
+    
     for i, (image_tensors, labels, real, img_pa) in enumerate(evaluation_loader):
-       
+        
+        
+
         for a,b in zip(real, img_pa):
             real_label.append(a)
             img_path_list.append(b)
@@ -134,12 +136,12 @@ def validation(model, criterion, evaluation_loader, converter, opt):
         valid_loss_avg.add(cost)
 
         # calculate accuracy.
+        
         for pred, gt in zip(preds_str, labels):
+#             if 'Attn' in opt.Prediction:
             pred = pred[:pred.find('[s]')]  # prune after "end of sentence" token ([s])
             gt = gt[:gt.find('[s]')]
             preds_str_list.append(pred)
-
-
             if pred == gt:
                 n_correct += 1
             if len(gt) == 0:
@@ -149,7 +151,7 @@ def validation(model, criterion, evaluation_loader, converter, opt):
 
     accuracy = n_correct / float(length_of_data) * 100
 #     print(len(preds_str), len(labels), len(real_label))
-    return valid_loss_avg.val(), accuracy, norm_ED, preds_str, labels, infer_time, length_of_data, real_label, img_path_list
+    return valid_loss_avg.val(), accuracy, norm_ED, preds_str_list, labels, infer_time, length_of_data, real_label, img_path_list
 
 
 def test(opt):

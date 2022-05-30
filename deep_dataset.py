@@ -13,12 +13,14 @@ from torch.utils.data import Dataset, ConcatDataset, Subset
 from torch._utils import _accumulate
 import torchvision.transforms as transforms
 import glob
+import cv2
+
 
 class lang_classifi(Dataset):
     """
     is_train = 1 <- train, 0 <- test
     """
-    def __init__(self, crop_img_path='/workspace/miruware/tttt/CRAFT-pytorch/tttt_crop_img/',trans= None):
+    def __init__(self, crop_img_path='',trans= None):
         super(lang_classifi, self).__init__()
         self.path = crop_img_path
         kor_data_list = glob.glob(crop_img_path + '*')
@@ -30,21 +32,21 @@ class lang_classifi(Dataset):
 
     def __getitem__(self, idx):
         path = self.data_list[idx]
-#         print(path)
         
         label = path.split('.jpg')[0].split('crop_img/')[-1].split('_')[-1].split('(')[0]
         image = Image.open(path).convert("RGB")
 
         if self.trans:
             image = self.trans(image)
-#             print(image.shape)
         return image, path
 
+
+    
 class classification(Dataset):
     """
     is_train = 1 <- train, 0 <- test
     """
-    def __init__(self, crop_img_path='/workspace/miruware/tttt/CRAFT-pytorch/tttt_crop_img/'):
+    def __init__(self, crop_img_path=''):
         super(classification, self).__init__()
         self.path = crop_img_path
         kor_data_list = glob.glob(crop_img_path + '*')
@@ -55,9 +57,6 @@ class classification(Dataset):
 
     def __getitem__(self, idx):
         path = self.data_list[idx]
-#         print(path)
-        
-#         label = path.split('.jpg')[0].split('crop_img/')[-1].split('_')[-1].split('(')[0]
         image = Image.open(path).convert("L")
 
         return image, '', '', path

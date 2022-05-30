@@ -69,6 +69,8 @@ def saveResult(img_file, img, boxes, dirname='./result/',cimg_dirname='./crop_im
                 xw = poly.reshape((-1, 1, 2))[1][0][0]
                 yh = poly.reshape((-1, 1, 2))[3][0][1]
                 
+                if x<0 or y<0 or xw<0 or yh<0:
+                    continue
                 cropped_img = img[y: yh, x: xw]
                 crop_img_file = cimg_dirname + "crop_" + filename  + '_' + str(x) + '|' + str(y) + '|' + str(xw) + '|' +  str(yh) + '.jpg'
                 cv2.imwrite(crop_img_file, cropped_img)
