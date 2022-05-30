@@ -102,7 +102,10 @@ def train(kr_opt, en_opt, sample_img_path, crop_img_path, final_img_path):
     font = ImageFont.truetype(fontpath, 50)
 
     for img_num in img_num_list:
-        image = cv2.imread(sample_img_path + str(img_num)+'.jpg')
+        if os.path.isfile(sample_img_path[:-1]+'_ori/' + str(img_num)+'.jpg'):
+            image = cv2.imread(sample_img_path[:-1]+'_ori/' + str(img_num)+'.jpg')
+        else:
+            image = cv2.imread(sample_img_path + str(img_num)+'.jpg')
         img_pil = Image.fromarray(image)
         draw = ImageDraw.Draw(img_pil)
         for kr_pred, en_pred, path in zip(kr_pred_list, en_pred_list, img_path):
