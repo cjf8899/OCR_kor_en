@@ -99,12 +99,13 @@ def train(kr_opt, en_opt, sample_img_path, crop_img_path, final_img_path):
     img_num_list = list(my_set)
     fontpath = "./font/NanumBarunGothic.ttf"
     font = ImageFont.truetype(fontpath, 50)
-
+    if sample_img_path[:-1] =='/':
+        sample_img_path = sample_img_path[:-1]
     for k, img_num in enumerate(img_num_list):
-        if os.path.isfile(sample_img_path[:-1]+'_ori/' + str(img_num)+'.jpg'):
-            image = cv2.imread(sample_img_path[:-1]+'_ori/' + str(img_num)+'.jpg')
+        if os.path.isfile(sample_img_path+'_ori/' + str(img_num)+'.jpg'):
+            image = cv2.imread(sample_img_path+'_ori/' + str(img_num)+'.jpg')
         else:
-            image = cv2.imread(sample_img_path + str(img_num)+'.jpg')
+            image = cv2.imread(sample_img_path + '/' + str(img_num)+'.jpg')
         
         print("Test image {:d}/{:d}: {:s}".format(k+1, len(img_num_list), img_num), end='\r')
         img_pil = Image.fromarray(image)
