@@ -1,7 +1,7 @@
 # OCR_kor_en
 This repo is an End to End code that **detection language in images and recognition Korean and English.**
 ## Demo
-<img src="https://user-images.githubusercontent.com/53032349/170911900-b80eff29-412b-405d-bf83-10f1e2eb2db2.mp4" alt="Change Pair Result" width="400"/>   <img src="https://user-images.githubusercontent.com/53032349/170911953-aa99ea12-0c1d-48a8-a725-f50da9bec6db.mp4" alt="Unchange Pair Result" width="400"/>
+<img src="https://user-images.githubusercontent.com/53032349/170912999-ed3f35a7-1a8c-4ece-9147-ed518bd75795.gif" alt="Change Pair Result" width="400"/>   <img src="https://user-images.githubusercontent.com/53032349/170913056-f999b44f-2c10-4b6d-b9b5-4565e0a02518.gif" alt="Unchange Pair Result" width="400"/>
 
 <img src="https://user-images.githubusercontent.com/53032349/129499027-8610143e-7174-4278-baca-6c6c0b5c5453.png" width="100%" height="100%" title="70px" alt="memoryblock"><br>
 
@@ -22,7 +22,7 @@ Download models
 ## Video2img
 
 Crop the video frame by frame and apply a morphology operation for increase the recognition rate.<br>
-<img src="https://user-images.githubusercontent.com/53032349/170910668-98864001-9ab4-41e6-b833-1c4905b44e43.png" width="100%" height="100%" title="70px" alt="memoryblock"><br>
+<img src="https://user-images.githubusercontent.com/53032349/170910668-98864001-9ab4-41e6-b833-1c4905b44e43.png" width="70%" height="70%" title="70px" alt="memoryblock"><br>
 Put your video name in video_name. (ex: ocr_test.mp4)<br>
 ```Shell
 python video2img.py --video_name ocr_test.mp4
