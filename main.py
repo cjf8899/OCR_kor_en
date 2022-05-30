@@ -316,6 +316,7 @@ if __name__ == '__main__':
     
     ###################################################
     parser = argparse.ArgumentParser()
+    parser.add_argument('--test_folder', default='', type=str, help='folder path to input images')
     parser.add_argument('--pretrain_model', type=str, default='./model/kor_reg_97.42.pth', help='korean pre-train model')
     parser.add_argument('--experiment_name', help='Where to store logs and models')
     parser.add_argument('--manualSeed', type=int, default=1111, help='for random seed setting')
@@ -381,6 +382,7 @@ if __name__ == '__main__':
     
     
     parser = argparse.ArgumentParser()
+    parser.add_argument('--test_folder', default='', type=str, help='folder path to input images')
     parser.add_argument('--pretrain_model', type=str, default='./model/TPS-ResNet-BiLSTM-Attn.pth', help='english pre-train model')
     parser.add_argument('--exp_name', help='Where to store logs and models')
     parser.add_argument('--workers', type=int, help='number of data loading workers', default=8)
